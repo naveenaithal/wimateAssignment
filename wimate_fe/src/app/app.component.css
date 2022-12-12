@@ -1,0 +1,157 @@
+ .user-form{
+ padding: 20px;
+  border-radius: 40px;
+  background: #ecf0f3;
+  box-shadow: 13px 13px 20px #cbced1,
+              -13px -13px 20px #ffffff;
+    margin-top: 40px;
+
+}
+.form-control, .form-select{
+     background-color: #ecf0f3 !important; 
+}
+
+/* .fields {
+  width: 100%;
+}
+.fields input {
+  border: none;
+  outline:none;
+  background: none;
+  font-size: 18px;
+  color: #555;
+  padding:8px 3px 8x 2px;
+}
+.name, .email, .phone-number, .address {
+  margin-bottom: 30px;
+  border-radius: 25px;
+  box-shadow: inset 8px 8px 8px #cbced1,
+              inset -8px -8px 8px #ffffff;
+}
+  */
+
+.register-button {
+    width: 98px;
+  outline: none;
+  border:none;
+  cursor: pointer;
+  height: 35px;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  color:#fff;
+  text-align: center;
+  background: #24cfaa;
+  box-shadow: 3px 3px 8px #b1b1b1,
+              -3px -3px 8px #ffffff;
+  transition: 0.5s;
+}
+.register-button:hover {
+  background:#2fdbb6;
+}
+.register-button:active {
+  background:#1da88a;
+}
+  .card-header-item{
+      display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+  }
+.img-icon{
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+}
+  .control-icons{
+    /* width: 110px; */
+    display: flex;
+    gap: 15px;
+
+  }
+
+
+.high{
+ color: red;
+  
+}
+
+.medium{
+ color: blue;
+}
+
+.low{
+ color: rgb(194, 194, 18);
+}
+
+
+
+.user-display-card{
+  height: fit-content;
+
+     padding: 4px;
+    border-radius: 8px;
+  background: #ecf0f3;
+  /* background: #656565; */
+
+  box-shadow: 13px 13px 20px #cbced1,
+              -13px -13px 20px #ffffff;
+    margin-top: 40px;
+    width: 356px;
+    align-items: center;
+}
+.userNameTag{
+    margin-bottom: 0px !important;
+}
+
+p{
+    margin-bottom: 0px;
+}
+
+
+.full-text{
+    display: none;
+    width: 100%;
+}
+
+.loop-card:hover .full-text{
+    display: block;
+}
+
+.card-content-one{
+        width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-content-two{
+        flex-direction: row;
+    justify-content: space-between;
+}
+
+.user-container{
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.loop-card{
+  width: 100%;
+      min-height: 80px;
+      border-radius: 8px;
+
+
+}
+.active{
+  color:green;
+}
+.completed{
+  color: blue;
+}
+
+.close-btn {
+  font-size: 30px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
