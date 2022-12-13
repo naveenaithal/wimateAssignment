@@ -27,7 +27,7 @@ app.use(express.json())
 app.use("/api",todoRouter)
 const start = async () => {
     try {
-      server.listen(process.env.PORT, () =>
+      server.listen(process.env.PORT || 8081, () =>
         console.log(`Server is listening on port ${process.env.PORT}...`)
       );
     } catch (error) {

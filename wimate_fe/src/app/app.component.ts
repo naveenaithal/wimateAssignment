@@ -64,7 +64,8 @@ toDoList:TODO[]=[]
   submitForm(form: any) {
 
 this.todoService.postTodo(form.value).subscribe((res) => {
-           console.log(res)
+          //  console.log(res)
+           this.getAllTodos()
           },
   (error: HttpErrorResponse) => {
     console.log(error.error);
@@ -153,9 +154,6 @@ this.todoService.postTodo(form.value).subscribe((res) => {
     let finalForm = form.value
     console.log(form.value)
     finalForm._id=this.toDetails._id
-    
-    console.log(finalForm)
-
        this.isUpdate=false
            form.resetForm();
 
