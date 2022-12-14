@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { TODO } from 'src/assets/interfaces/todoInterface';
 import { TodoService } from 'src/service/todo.service';
+import Swal from 'sweetalert2';
 
   const data = [
     {taskName: 'Test 1', description: ' sitspiciatis harum dolorum, blanditiis voluptatum', priority: 'high',dueDate:'10-10-2023', status: 'active' },
@@ -42,16 +43,16 @@ toDoList:TODO[]=[]
     this.todoService.getTodo().subscribe((res:any) => {
       console.log(res.data)
     
-      let firstArray = []
-      let lastArray=[]
-       for(let i=0;i< res.data.length;i++){
-     if(res.data[i].priority==='high' && res.data[i].status==='active'){
-         firstArray.push(res.data[i])
+    //   let firstArray = []
+    //   let lastArray=[]
+    //    for(let i=0;i< res.data.length;i++){
+    //  if(res.data[i].priority==='high' && res.data[i].status==='active'){
+    //      firstArray.push(res.data[i])
          
-     }
-     else{
-     lastArray.push(res.data[i])
-     }}
+    //  }
+    //  else{
+    //  lastArray.push(res.data[i])
+    //  }}
        this.toDoList=res.data.sort((a:any, b:any) => a.status.toLowerCase() > b.status.toLowerCase() ? 1 : -1);
     },
        (error: HttpErrorResponse) => {
@@ -65,6 +66,16 @@ toDoList:TODO[]=[]
 
 this.todoService.postTodo(form.value).subscribe((res) => {
           //  console.log(res)
+  if (res) {
+     
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Todo added to the list',
+      showConfirmButton: false,
+      timer: 1500
+    })
+   }
            this.getAllTodos()
           },
   (error: HttpErrorResponse) => {
@@ -106,11 +117,29 @@ this.todoService.postTodo(form.value).subscribe((res) => {
 
  
   deleteTODO(details: TODO) {
-    console.log(details)
-    this.todoService.deleteTodo(details._id).subscribe((res:any) => {
+
+
+Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+
+
+ this.todoService.deleteTodo(details._id).subscribe((res:any) => {
       console.log(res)
       if (res.msg === "Todo deleted") {
         this.getAllTodos()
+         Swal.fire(
+      'Deleted!',
+      'Todo has been deleted.',
+      'success'
+    )
         return
       }
           },
@@ -118,6 +147,11 @@ this.todoService.postTodo(form.value).subscribe((res) => {
     console.log(error.error);
   }
 )
+
+   
+  }
+})
+   
   //   this.users.splice(i, 1)
   //  localStorage.setItem('users',JSON.stringify(this.users))
 
@@ -129,8 +163,15 @@ this.todoService.postTodo(form.value).subscribe((res) => {
     const {_id}=details
     this.todoService.updateTodo(_id).subscribe((res:any) => {
       console.log(res)
-      if (res.msg === "Todo deleted") {
+      if (res.msg === "task completed") {
         this.getAllTodos()
+        Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: 'Todo completed',
+  showConfirmButton: false,
+  timer: 1500
+})
         return
       }
           },
@@ -152,11 +193,17 @@ this.todoService.postTodo(form.value).subscribe((res) => {
   }
   submitUpdatedFrom(form: any) {
     let finalForm = form.value
-    console.log(form.value)
     finalForm._id=this.toDetails._id
-       this.isUpdate=false
-           form.resetForm();
+    form.resetForm();
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+  title: 'Todo Updated',
+  showConfirmButton: false,
+  timer: 1500
+})
 
+this.isUpdate=false
     
   }
   
