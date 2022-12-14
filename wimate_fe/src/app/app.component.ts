@@ -52,7 +52,7 @@ toDoList:TODO[]=[]
      else{
      lastArray.push(res.data[i])
      }}
-       this.toDoList=[...firstArray,...lastArray]
+       this.toDoList=res.data.sort((a:any, b:any) => a.status.toLowerCase() > b.status.toLowerCase() ? 1 : -1);
     },
        (error: HttpErrorResponse) => {
     console.log(error.error);
